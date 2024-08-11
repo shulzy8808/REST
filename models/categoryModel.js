@@ -9,13 +9,17 @@ const categorySchema = mongoose.Schema (
         img:{
             type: String,
             require: true
+        },
+        link: {
+            type: String,
+            require: true
         }
     } ,
     {
-        timstamps: true
+        timestamps: true
     }
 )
 
 const Category = mongoose.model("Category", categorySchema)
 
-module.exports =  Category
+module.exports =  Category;

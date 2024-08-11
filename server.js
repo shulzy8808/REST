@@ -2,12 +2,11 @@ require('dotenv').config();
 const cors = require('cors')
 const express = require('express');
 const  mongoose = require('mongoose');
-const  Product = require('./models/productModel');
-const Category = require('./models/categoryModel.js');
 const categoryRouter = require('./routes/categoryRoutes.js');
-const productRouter = require('./routes/productRoutes.js');
+const sportswearRouter = require('./routes/sportswearRouter.js');
 const errorMiddleware = require('./middleware/errorMiddleware.js');
-
+const menswearRouter = require("./routes/menswearRouter.js");
+const womenswearRouter = require("./routes/womenswearRouter.js");
 
 const app = express();
 
@@ -27,12 +26,13 @@ app.get('/', (req, res) => {
 })
 
 // Create
-app.use('/api', productRouter)
 app.use("/api", categoryRouter);
 
 //Retrieve
-app.use('/api', productRouter);
+app.use('/api', sportswearRouter);
 app.use('/api',categoryRouter);
+app.use('/api', menswearRouter);
+app.use('/api', womenswearRouter);
 
 app.use(errorMiddleware);
 
